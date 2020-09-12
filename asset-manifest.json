@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/quanlyadmin/static/css/main.a1ff8691.chunk.css",
-    "main.js": "/quanlyadmin/static/js/main.0afe35ea.chunk.js",
-    "main.js.map": "/quanlyadmin/static/js/main.0afe35ea.chunk.js.map",
+    "main.css": "/quanlyadmin/static/css/main.aad8b310.chunk.css",
+    "main.js": "/quanlyadmin/static/js/main.e800d02a.chunk.js",
+    "main.js.map": "/quanlyadmin/static/js/main.e800d02a.chunk.js.map",
     "runtime-main.js": "/quanlyadmin/static/js/runtime-main.7b8f10e7.js",
     "runtime-main.js.map": "/quanlyadmin/static/js/runtime-main.7b8f10e7.js.map",
     "static/js/2.8d2636e1.chunk.js": "/quanlyadmin/static/js/2.8d2636e1.chunk.js",
     "static/js/2.8d2636e1.chunk.js.map": "/quanlyadmin/static/js/2.8d2636e1.chunk.js.map",
     "index.html": "/quanlyadmin/index.html",
-    "precache-manifest.bfb7714084fb499954ef384934680b21.js": "/quanlyadmin/precache-manifest.bfb7714084fb499954ef384934680b21.js",
+    "precache-manifest.6e14141c30babcb0493387eae010eb2a.js": "/quanlyadmin/precache-manifest.6e14141c30babcb0493387eae010eb2a.js",
     "service-worker.js": "/quanlyadmin/service-worker.js",
-    "static/css/main.a1ff8691.chunk.css.map": "/quanlyadmin/static/css/main.a1ff8691.chunk.css.map",
+    "static/css/main.aad8b310.chunk.css.map": "/quanlyadmin/static/css/main.aad8b310.chunk.css.map",
     "static/js/2.8d2636e1.chunk.js.LICENSE.txt": "/quanlyadmin/static/js/2.8d2636e1.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.7b8f10e7.js",
     "static/js/2.8d2636e1.chunk.js",
-    "static/css/main.a1ff8691.chunk.css",
-    "static/js/main.0afe35ea.chunk.js"
+    "static/css/main.aad8b310.chunk.css",
+    "static/js/main.e800d02a.chunk.js"
   ]
 }
