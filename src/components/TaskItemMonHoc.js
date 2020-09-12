@@ -17,6 +17,7 @@ class TaskItemMonHoc extends Component {
                     <tr>
                             
                             <td className = "text-center">{index + 1}</td>
+                            <td className = "text-center">{tasksS.mamh}</td>
                             <td className = "text-center">{tasksS.monhoc}</td>
                             
                             

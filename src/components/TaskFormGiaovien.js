@@ -5,16 +5,17 @@ class TaskFormGiaovien extends Component {
     constructor(props){
         super(props);
         this.state = {
+            id: '',
             giaovien: '',
             monday: '',
             chucvu: '',
             email: '',
-            sdt: '',
-            isInputValid: true,
-            errorMessageTenKhoi: '' ,
-            errorMessageTenLop: '',
-            errorMessageGiaoVien: '',
-            errorMessageMonChuyen: ''
+            sdt: ''
+            // isInputValid: true,
+            // errorMessageTenKhoi: '' ,
+            // errorMessageTenLop: '',
+            // errorMessageGiaoVien: '',
+            // errorMessageMonChuyen: ''
         }
     }
     
@@ -73,27 +74,29 @@ class TaskFormGiaovien extends Component {
     componentWillMount() {
         if(this.props.taskGiaovien){
             this.setState({
-                tenkhoi : this.props.taskGiaovien.tenkhoi,
-                tenlop: this.props.taskGiaovien.tenlop,
-                giaovien: this.props.taskGiaovien.giaovien,
-                chucvu: this.props.taskGiaovien.chucvu
+                id: this.props.taskGiaovien.id,
+                giaovien : this.props.taskGiaovien.giaovien,
+                monday: this.props.taskGiaovien.monday,
+                chucvu: this.props.taskGiaovien.chucvu,
+                email: this.props.taskGiaovien.email,
+                sdt: this.props.taskGiaovien.sdt
             })
         }
     }
 
-    Validationmonday = (event) => {
-        if(this.state.chucvu ===''){
-            this.setState({
-                isInputValid : !this.state.isInputValid,
-                errorMessageMonChuyen : 'Vui lòng nhập môn dạy'
-            })
-        }else {
-            this.setState({
-                isInputValid : this.state.isInputValid,
-                errorMessageMonChuyen : ''
-            })
-        }
-    }
+    // Validationmonday = (event) => {
+    //     if(this.state.chucvu ===''){
+    //         this.setState({
+    //             isInputValid : !this.state.isInputValid,
+    //             errorMessageMonChuyen : 'Vui lòng nhập môn dạy'
+    //         })
+    //     }else {
+    //         this.setState({
+    //             isInputValid : this.state.isInputValid,
+    //             errorMessageMonChuyen : ''
+    //         })
+    //     }
+    // }
 
     onSubmit = (event) => {
         event.preventDefault();
@@ -103,10 +106,11 @@ class TaskFormGiaovien extends Component {
 
     onClearST = () => {
         this.setState({
-            tenkhoi : '',
-            tenlop: '',
-            giaovien: '',
-            chucvu: ''
+            giaovien : '',
+            monday: '',
+            chucvu: '',
+            email: '',
+            sdt: '',
         })
     }
 
@@ -161,7 +165,7 @@ class TaskFormGiaovien extends Component {
                           
                        </div>
                        <div className="form-group">
-                           <label >SĐT:</label>
+                           <label >Email:</label>
                            <input type="text" className="form-control"
                            name = 'email'
                            value = {this.state.email}
@@ -170,12 +174,11 @@ class TaskFormGiaovien extends Component {
                            
                        </div>
                        <div className="form-group">
-                           <label >Email:</label>
+                           <label >SĐT:</label>
                            <input type="text" className="form-control"
                            name = 'sdt'
                            value = {this.state.sdt}
-                           onChange = {this.onChange}
-                           onBlur = {this.ValidationGiaoVien}/>
+                           onChange = {this.onChange} />
                           
                        </div>
                    

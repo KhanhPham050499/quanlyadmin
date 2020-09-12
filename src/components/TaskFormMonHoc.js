@@ -6,6 +6,7 @@ class TaskFormMonHoc extends Component {
         super(props);
         this.state = {
             id:'',
+            mamh: '',
             monhoc: '',
             isInputValid: true,
             errorMessageHT: '' ,
@@ -18,7 +19,6 @@ class TaskFormMonHoc extends Component {
         var target = event.target;
         var name = target.name;
         var value = target.value
-        this.onClear();
         this.setState({
             [name] : value
         })
@@ -28,24 +28,25 @@ class TaskFormMonHoc extends Component {
         if(this.props.tasksS){
             this.setState({
                 id: this.props.tasksS.id,
+                mamh : this.props.tasksS.mamh,
                 monhoc : this.props.tasksS.monhoc  
             })
         }
     }
     
-    ValidationHT = (event) => {
-        if(this.state.monhoc ===''){
-            this.setState({
-                isInputValid : !this.state.isInputValid,
-                errorMessage : 'Vui lòng nhập môn học'
-            })
-        }else {
-            this.setState({
-                isInputValid : this.state.isInputValid,
-                errorMessage : ''
-            })
-        }
-    }
+    // ValidationHT = (event) => {
+    //     if(this.state.monhoc ===''){
+    //         this.setState({
+    //             isInputValid : !this.state.isInputValid,
+    //             errorMessage : 'Vui lòng nhập môn học'
+    //         })
+    //     }else {
+    //         this.setState({
+    //             isInputValid : this.state.isInputValid,
+    //             errorMessage : ''
+    //         })
+    //     }
+    // }
 
     onCloseForm = () => {
         this.props.onCloseForm();
@@ -60,6 +61,7 @@ class TaskFormMonHoc extends Component {
 
     onClear = () =>  {
           this.setState({
+              mamh: '',
               monhoc : ''
           })
     }
@@ -81,6 +83,18 @@ class TaskFormMonHoc extends Component {
                    {/* Form input*/ }
                    
                    <form onSubmit = {this.onSubmit}>
+                   <div className="form-group invalid">
+                           <label>Mã môn học:</label>
+                           <input type="text" className="form-control mt-10"
+                           name ='mamh'
+                           value = {this.state.mamh}
+                           onChange = {this.onChange}
+                           onBlur = {this.ValidationHT}
+                          />
+                            {this.state.mamh === '' ? <span style = {{color : 'red'}}>           
+                               {this.state.errorMessage}
+                            </span> : null }
+                       </div>
                        <div className="form-group invalid">
                            <label>Tên môn học:</label>
                            <input type="text" className="form-control mt-10"

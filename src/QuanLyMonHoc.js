@@ -9,39 +9,45 @@ class MonHoc extends Component {
         this.state = {
             tasksS: [
                 {
-                    id:this.generateID(),
-                    monhoc:'Toán'
+                    id: this.generateID(),
+                    mamh: 'TOAN',
+                    monhoc: 'Toán'
 
                 },
                 {
-                    id:this.generateID(),
-                    monhoc:'Anh văn'
+                    id: this.generateID(),
+                    mamh: 'ANH',
+                    monhoc: 'Anh văn'
 
                 },
                 {
-                    id:this.generateID(),
-                    monhoc:'Vật lý'
+                    id: this.generateID(),
+                    mamh: 'VATLY',
+                    monhoc: 'Vật lý'
 
                 },
                 {
-                    id:this.generateID(),
-                    monhoc:'Ngữ văn'
+                    id: this.generateID(),
+                    mamh: 'VAN',
+                    monhoc: 'Ngữ văn'
 
                 },
                 {
-                    id:this.generateID(),
-                    monhoc:'Hóa học'
+                    id: this.generateID(),
+                    mamh: 'HOA',
+                    monhoc: 'Hóa học'
 
                 }
             ],
             isDisplayForm: false
         }
     }
-    
+
     onToggleForm = () => {
 
         this.setState({
-            isDisplayForm: !this.state.isDisplayForm
+            isDisplayForm: !this.state.isDisplayForm,
+            taskEditing: null
         })
 
     }
@@ -66,31 +72,35 @@ class MonHoc extends Component {
     // onReset = () => {
     //     var tasksS = [
     //         {
-    //             id:this.generateID(),
-    //             monhoc:'Toán'
+    //             id: this.generateID(),
+    //             mamh: 'TOAN',
+    //             monhoc: 'Toán'
 
     //         },
     //         {
-    //             id:this.generateID(),
-    //             monhoc:'Anh văn'
+    //             id: this.generateID(),
+    //             mamh: 'ANH',
+    //             monhoc: 'Anh văn'
 
     //         },
     //         {
-    //             id:this.generateID(),
-    //             monhoc:'Vật lý'
+    //             id: this.generateID(),
+    //             mamh: 'VATLY',
+    //             monhoc: 'Vật lý'
 
     //         },
     //         {
-    //             id:this.generateID(),
-    //             monhoc:'Ngữ văn'
+    //             id: this.generateID(),
+    //             mamh: 'VAN',
+    //             monhoc: 'Ngữ văn'
 
     //         },
     //         {
-    //             id:this.generateID(),
-    //             monhoc:'Hóa học'
+    //             id: this.generateID(),
+    //             mamh: 'HOA',
+    //             monhoc: 'Hóa học'
 
     //         }
-
     //     ]
     //     this.setState({
     //         tasksS: tasksS
@@ -122,15 +132,21 @@ class MonHoc extends Component {
 
     onSubmit = (data) => {
         var { tasksS } = this.state;
-        data.id = this.generateID();
-        if (data.monhoc !== '') {
+        if (data.id === '') {
+            data.id = this.generateID();
             tasksS.push(data);
+
+        } else {
+            //Editing   
+            var index = this.findIndex(data.id);
+            tasksS[index] = data;
+
         }
         this.setState({
-            tasksS: tasksS
+            tasksS: tasksS,
+            taskEditing: null
         })
         localStorage.setItem('tasksS', JSON.stringify(tasksS));
-        this.onCloseForm();
     }
 
 
@@ -172,8 +188,8 @@ class MonHoc extends Component {
     }
     render() {
 
-        var { tasksS , isDisplayForm, taskEditing} = this.state;
-        
+        var { tasksS, isDisplayForm, taskEditing } = this.state;
+
         var elmTaskFromMonHoc = isDisplayForm
             ? <TaskFormMonHoc
                 onCloseForm={this.onCloseForm}
@@ -210,14 +226,14 @@ class MonHoc extends Component {
                                     <i className="fas fa-plus mr-5"></i>
                                                         Thêm môn học
                                                     </button>
-                                                   </div>
+                            </div>
                             <br />
                             <br />
-                            {/* <button type="button" 
-                                                    className="btn btn-danger mb-5 "
-                                                    onClick = {this.onReset}>
-                                                 
-                                                Làm mới điểm
+                            {/* <button type="button"
+                                className="btn btn-danger mb-5 "
+                                onClick={this.onReset}>
+
+                                Làm mới điểm
                                             </button> */}
 
                             <div className="panel panel-primary panel-class">

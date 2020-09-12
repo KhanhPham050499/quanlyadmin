@@ -62,7 +62,8 @@ class Giaovien extends Component {
     onToggleForm = () => {
 
         this.setState({
-            isDisplayForm: !this.state.isDisplayForm
+            isDisplayForm: !this.state.isDisplayForm,
+            taskEditing: null
         })
 
     }
@@ -100,14 +101,20 @@ class Giaovien extends Component {
 
 
     onSubmit = (data) => {
-        console.log(data);
         var { taskGiaovien } = this.state;
-        data.id = this.generateID();
-        if (data.tenkhoi !== "" && data.tenlop !== "" && data.giaovien !== "" && data.chuyenmon !== "") {
+        if (data.id === '') {
+            data.id = this.generateID();
             taskGiaovien.push(data);
+
+        } else {
+            //Editing   
+            var index = this.findIndex(data.id);
+            taskGiaovien[index] = data;
+
         }
         this.setState({
-            taskGiaovien: taskGiaovien
+            taskGiaovien: taskGiaovien,
+            taskEditing: null
         })
         localStorage.setItem('taskGiaovien', JSON.stringify(taskGiaovien));
         this.onCloseForm();

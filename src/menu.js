@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import './App.css';
 import LopHoc from './QuanlyLopHoc'
 import MonHoc from './QuanLyMonHoc';
-import Diem from './QuanlyDiem';
 import Danhsachquanly from './Danhsachquanly';
 import Giaovien from './QuanlyGiaovien'
 import HocSinh from './QuanlyHocSinh'
@@ -40,10 +39,10 @@ class Menu extends Component {
                     <img className="img-bg" alt="Image" />
                     
                     <div className='sidebar'>
-                        <header>Trang quản trị</header>
+                        <header>Danh sách quản lý</header>
                         <ul>
                             <li>
-                                <NavLink to='/danhsachquanly'>Thông tin</NavLink>
+                                <NavLink to='/danhsachquanly'><i className="far fa-question-circle"></i>Thông tin</NavLink>
                             </li>
                             <li>
                                 <NavLink to='/quanlylophoc' activeStyle={{ background: '#1a2225' }}>Quản lý lớp học</NavLink>
@@ -70,12 +69,10 @@ class Menu extends Component {
                   
 
                     <Route path="/danhsachquanly" component={Danhsachquanly} />
-                    <Route path="/quanlydiem" component={Diem} />
                     <Route path="/quanlymonhoc" component={MonHoc} />
                     <Route path="/quanlylophoc" component={LopHoc} />
                     <Route path="/quanlygiaovien" component={Giaovien} />
                     <Route path="/quanlyhocsinh" component={HocSinh} />
-
 
                 </div>
 

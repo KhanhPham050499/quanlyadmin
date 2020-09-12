@@ -20,6 +20,7 @@ class TaskItemHocSinh extends Component {
                     <tr>
                             
                             <td className = "text-center">{index + 1}</td>
+                            <td className = "text-center">{task.mahs}</td>
                             <td className = "text-center">{task.HocSinh}</td>
                             <td className = "text-center">{task.lop}</td>
                             <td className = "text-center">{task.ngaysinh}</td>

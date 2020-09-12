@@ -19,6 +19,7 @@ class TaskListMonHoc extends Component {
                     <thead>
                         <tr>
                             <th className = 'text-center'>STT</th>
+                            <th className = 'text-center'>Mã môn học</th>
                             <th className = 'text-center'>Môn học</th>
                             <th></th>
                         </tr>

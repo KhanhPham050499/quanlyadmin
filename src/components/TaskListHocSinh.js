@@ -24,6 +24,7 @@ class TaskListHocSinh extends Component {
                     <thead>
                         <tr>
                             <th className = "text-center">STT</th>
+                            <th className = "text-center">Mã học sinh</th>
                             <th className = "text-center">Họ và tên</th>
                             <th className = "text-center">Lớp</th>
                             <th className = "text-center">Ngày sinh</th>

@@ -10,43 +10,49 @@ class LopHoc extends Component {
             tasksLopHoc: [
                 {
                     id: this.generateID(),
+                    malop: 'L10B3',
                     tenkhoi: 'Khối 10',
-                    tenlop: '10B3',
+                    tenlop: 'Lớp 10B3',
                     giaovien: 'Nguyễn Văn Linh',
                     chuyenmon: 'Toán'
                 },
                 {
                     id: this.generateID(),
+                    malop: 'L10B5',
                     tenkhoi: 'Khối 10',
-                    tenlop: '10B5',
+                    tenlop: 'Lớp 10B5',
                     giaovien: 'Hoàng Thị Hà',
                     chuyenmon: 'Anh văn'
                 },
                 {
                     id: this.generateID(),
+                    malop: 'L10B6',
                     tenkhoi: 'Khối 10',
-                    tenlop: '10B6',
+                    tenlop: 'Lớp 10B6',
                     giaovien: 'Nguyễn Văn Tuấn',
                     chuyenmon: 'Ngữ Văn'
                 },
                 {
                     id: this.generateID(),
+                    malop: 'L11B1',
                     tenkhoi: 'Khối 11',
-                    tenlop: '11B1',
+                    tenlop: 'Lớp 11B1',
                     giaovien: 'Trần Thu Hoài',
                     chuyenmon: 'Hóa học'
                 },
                 {
                     id: this.generateID(),
+                    malop: 'L11B2',
                     tenkhoi: 'Khối 11',
-                    tenlop: '10B2',
+                    tenlop: 'Lớp 10B2',
                     giaovien: 'Phạm Văn Khánh',
                     chuyenmon: 'Vật lý'
                 },
                 {
                     id: this.generateID(),
+                    malop: 'L12B4',
                     tenkhoi: 'Khối 12',
-                    tenlop: '12B4',
+                    tenlop: 'Lớp 12B4',
                     giaovien: 'Lê Bá Cường',
                     chuyenmon: 'Sinh học'
                 }
@@ -55,6 +61,63 @@ class LopHoc extends Component {
             isDisplayForm: false,
         }
     }
+//  onReset = () => {
+//         var tasksLopHoc = [
+//             {
+//                 id: this.generateID(),
+//                 malop: 'L10B3',
+//                 tenkhoi: 'Khối 10',
+//                 tenlop: 'Lớp 10B3',
+//                 giaovien: 'Nguyễn Văn Linh',
+//                 chuyenmon: 'Toán'
+//             },
+//             {
+//                 id: this.generateID(),
+//                 malop: 'L10B5',
+//                 tenkhoi: 'Khối 10',
+//                 tenlop: 'Lớp 10B5',
+//                 giaovien: 'Hoàng Thị Hà',
+//                 chuyenmon: 'Anh văn'
+//             },
+//             {
+//                 id: this.generateID(),
+//                 malop: 'L10B6',
+//                 tenkhoi: 'Khối 10',
+//                 tenlop: 'Lớp 10B6',
+//                 giaovien: 'Nguyễn Văn Tuấn',
+//                 chuyenmon: 'Ngữ Văn'
+//             },
+//             {
+//                 id: this.generateID(),
+//                 malop: 'L11B1',
+//                 tenkhoi: 'Khối 11',
+//                 tenlop: 'Lớp 11B1',
+//                 giaovien: 'Trần Thu Hoài',
+//                 chuyenmon: 'Hóa học'
+//             },
+//             {
+//                 id: this.generateID(),
+//                 malop: 'L11B2',
+//                 tenkhoi: 'Khối 11',
+//                 tenlop: 'Lớp 10B2',
+//                 giaovien: 'Phạm Văn Khánh',
+//                 chuyenmon: 'Vật lý'
+//             },
+//             {
+//                 id: this.generateID(),
+//                 malop: 'L12B4',
+//                 tenkhoi: 'Khối 12',
+//                 tenlop: 'Lớp 12B4',
+//                 giaovien: 'Lê Bá Cường',
+//                 chuyenmon: 'Sinh học'
+//             }
+
+//         ]
+//         this.setState({
+//             tasksLopHoc: tasksLopHoc
+//         })
+//         localStorage.setItem('tasksLopHoc', JSON.stringify(tasksLopHoc));
+//     }
 
 
 
@@ -62,7 +125,8 @@ class LopHoc extends Component {
     onToggleForm = () => {
 
         this.setState({
-            isDisplayForm: !this.state.isDisplayForm
+            isDisplayForm: !this.state.isDisplayForm,
+            taskEditing: null
         })
 
     }
@@ -103,33 +167,27 @@ class LopHoc extends Component {
 
 
     onSubmit = (data) => {
-        console.log(data);
         var { tasksLopHoc } = this.state;
-        data.id = this.generateID();
-        if (data.tenkhoi !== "" && data.tenlop !== "" && data.giaovien !== "" && data.chuyenmon !== "") {
+        if (data.id === '') {
+            data.id = this.generateID();
             tasksLopHoc.push(data);
+
+        } else {
+            //Editing   
+                var index = this.findIndex(data.id);
+                tasksLopHoc[index] = data;
+
         }
         this.setState({
-            tasksLopHoc: tasksLopHoc
+            tasksLopHoc: tasksLopHoc,
+            taskEditing: null
         })
         localStorage.setItem('tasksLopHoc', JSON.stringify(tasksLopHoc));
-        this.onCloseForm();
-    }
 
-    onShowForm = () => {
-        this.setState({
-            isDisplayForm: true
-        })
-    }
+        }
+    
 
-    onChange = (event) => {
-        var target = event.target;
-        var name = target.name;
-        var value = target.value;
-        this.setState({
-            [name]: value
-        })
-    }
+    
 
     findIndex = (id) => {
         var { tasksLopHoc } = this.state;
@@ -154,6 +212,11 @@ class LopHoc extends Component {
             localStorage.setItem('tasksLopHoc', JSON.stringify(tasksLopHoc));
         }
         this.onClose();
+    }
+    onShowForm = () => {
+        this.setState({
+            isDisplayForm: true
+        })
     }
 
     onUpdateLopHoc = (id) => {
@@ -208,11 +271,17 @@ class LopHoc extends Component {
                                                         Thêm lớp học
                                                     </button>&nbsp;
                                                    </div>
+                                                   {/* <button type="button" 
+                                                            className="btn btn-danger mb-5 "
+                                                            onClick = {this.onReset}>
+                                                        
+                                                        Reset All
+                                                    </button> */}
                             {/* Task List*/}
                             <TaskListLopHoc tasksLopHoc={tasksLopHoc}
                                 onDeleteLopHoc={this.onDeleteLopHoc}
                                 onUpdateLopHoc={this.onUpdateLopHoc} />
-
+                            <button type="button" className="btn btn-primary" style={{ display: 'block', margin: '0 auto' }}>1</button>
                         </div>
                     </div>
 

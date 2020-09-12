@@ -3,19 +3,11 @@ import TaskItemLopHoc from './TaskItemLopHoc'
 
 
 class TaskListLopHoc extends Component {
-        constructor(props){
-            super(props);
-            this.state = {
-                fitterName: ''
-            }
-        }
 
         render(){
         var {tasksLopHoc} = this.props
-
-        console.log(tasksLopHoc)
-        var elmTasks = tasksLopHoc.map((task, index) =>{
-                return <TaskItemLopHoc  key ={index} index = {index}  task = {task}
+        var elmTasks = tasksLopHoc.map((tasksLopHoc, index) =>{
+                return <TaskItemLopHoc  key ={index} index = {index}  tasksLopHoc = {tasksLopHoc}
                 onDeleteLopHoc = {this.props.onDeleteLopHoc}
                 onUpdateLopHoc = {this.props.onUpdateLopHoc}/>
         })
@@ -26,6 +18,7 @@ class TaskListLopHoc extends Component {
                     <thead>
                         <tr>
                             <th className = "text-center">STT</th>
+                            <th className = "text-center">Mã lớp</th>
                             <th className = "text-center">Tên khối</th>
                             <th className = "text-center">Tên lớp</th>
                             <th className = "text-center">Giáo viên chủ nhiệm</th>

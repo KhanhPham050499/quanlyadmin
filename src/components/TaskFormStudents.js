@@ -37,8 +37,6 @@ class TaskFormStudents extends Component {
         var target = event.target;
         var name = target.name;
         var value = target.value
-        console.log(typeof value)
-        
             this.setState({
                 [name]: value
             })
@@ -66,7 +64,7 @@ class TaskFormStudents extends Component {
     onSubmit = (event) => {
         event.preventDefault();
         this.props.onSubmit(this.state);
-        
+        console.log(this.state)
     }
     
     onCloseForm = () => {

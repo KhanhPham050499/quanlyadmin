@@ -10,6 +10,7 @@ class HocSinh extends Component {
             taskHocSinh: [
                 {
                     id: this.generateID(),
+                    mahs: '1112',
                     HocSinh: 'Nguyễn Quang Thuận',
                     lop: '10B5',
                     ngaysinh: '22/10/2002'
@@ -17,6 +18,7 @@ class HocSinh extends Component {
                 },
                 {
                     id: this.generateID(),
+                    mahs: '1113',
                     HocSinh: 'Lê Văn Tiến',
                     lop: '10B3',
                     ngaysinh: '22/10/2002'
@@ -24,6 +26,7 @@ class HocSinh extends Component {
                 },
                 {
                     id: this.generateID(),
+                    mahs: '1114',
                     HocSinh: 'Nguyễn Lan Anh',
                     lop: '11B2',
                     ngaysinh: '22/10/2001'
@@ -31,6 +34,7 @@ class HocSinh extends Component {
                 },
                 {
                     id: this.generateID(),
+                    mahs: '1115',
                     HocSinh: 'Nguyễn Thị Lan',
                     lop: '12B3',
                     ngaysinh: '22/10/2000'
@@ -38,6 +42,7 @@ class HocSinh extends Component {
                 },
                 {
                     id: this.generateID(),
+                    mahs: '1116',
                     HocSinh: 'Trương Quang Việt',
                     lop: '12B6',
                     ngaysinh: '22/10/2000'
@@ -52,6 +57,7 @@ class HocSinh extends Component {
     //     var taskHocSinh = [
     //         {
     //             id: this.generateID(),
+    //             mahs: '1112',
     //             HocSinh: 'Nguyễn Quang Thuận',
     //             lop: '10B5',
     //             ngaysinh: '22/10/2002'
@@ -59,6 +65,7 @@ class HocSinh extends Component {
     //         },
     //         {
     //             id: this.generateID(),
+    //             mahs: '1113',
     //             HocSinh: 'Lê Văn Tiến',
     //             lop: '10B3',
     //             ngaysinh: '22/10/2002'
@@ -66,6 +73,7 @@ class HocSinh extends Component {
     //         },
     //         {
     //             id: this.generateID(),
+    //             mahs: '1114',
     //             HocSinh: 'Nguyễn Lan Anh',
     //             lop: '11B2',
     //             ngaysinh: '22/10/2001'
@@ -73,6 +81,7 @@ class HocSinh extends Component {
     //         },
     //         {
     //             id: this.generateID(),
+    //             mahs: '1115',
     //             HocSinh: 'Nguyễn Thị Lan',
     //             lop: '12B3',
     //             ngaysinh: '22/10/2000'
@@ -80,6 +89,7 @@ class HocSinh extends Component {
     //         },
     //         {
     //             id: this.generateID(),
+    //             mahs: '1116',
     //             HocSinh: 'Trương Quang Việt',
     //             lop: '12B6',
     //             ngaysinh: '22/10/2000'
@@ -96,7 +106,8 @@ class HocSinh extends Component {
     onToggleForm = () => {
 
         this.setState({
-            isDisplayForm: !this.state.isDisplayForm
+            isDisplayForm: !this.state.isDisplayForm,
+            taskEditing: null
         })
 
     }
@@ -134,14 +145,20 @@ class HocSinh extends Component {
 
 
     onSubmit = (data) => {
-        console.log(data);
         var { taskHocSinh } = this.state;
-        data.id = this.generateID();
-        if (data.tenkhoi !== "" && data.tenlop !== "" && data.HocSinh !== "" && data.chuyenmon !== "") {
+        if (data.id === '') {
+            data.id = this.generateID();
             taskHocSinh.push(data);
+
+        } else {
+            //Editing   
+            var index = this.findIndex(data.id);
+            taskHocSinh[index] = data;
+
         }
         this.setState({
-            taskHocSinh: taskHocSinh
+            taskHocSinh: taskHocSinh,
+            taskEditing: null
         })
         localStorage.setItem('taskHocSinh', JSON.stringify(taskHocSinh));
         this.onCloseForm();

@@ -5,26 +5,26 @@ import React, { Component } from 'react';
 class TaskItemLopHoc extends Component {
     
         onDeleteLopHoc = () => {
-           this.props.onDeleteLopHoc(this.props.task.id);
+           this.props.onDeleteLopHoc(this.props.tasksLopHoc.id);
         }
         
         onUpdateLopHoc = () => {
-            this.props.onUpdateLopHoc(this.props.task.id); 
+            this.props.onUpdateLopHoc(this.props.tasksLopHoc.id); 
         }
 
         
         render(){
-        var {task,index } = this.props
-        console.log(task)
+        var {tasksLopHoc,index } = this.props;
             
         return (
                     <tr>
                             
                             <td className = "text-center">{index + 1}</td>
-                            <td className = "text-center">{task.tenkhoi}</td>
-                            <td className = "text-center">{task.tenlop}</td>
-                            <td className = "text-center">{task.giaovien}</td>
-                            <td className = "text-center">{task.chuyenmon}</td>
+                            <td className = "text-center">{tasksLopHoc.malop}</td>
+                            <td className = "text-center">{tasksLopHoc.tenkhoi}</td>
+                            <td className = "text-center">{tasksLopHoc.tenlop}</td>
+                            <td className = "text-center">{tasksLopHoc.giaovien}</td>
+                            <td className = "text-center">{tasksLopHoc.chuyenmon}</td>
                             <td className ="text-center">
                                 
                                 <button type="button" className="btn btn-warning"  onClick = {this.onUpdateLopHoc}>
